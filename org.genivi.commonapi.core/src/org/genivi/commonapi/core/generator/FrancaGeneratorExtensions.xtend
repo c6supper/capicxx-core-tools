@@ -1853,6 +1853,11 @@ class FrancaGeneratorExtensions {
         return baseInterfaces.map[getTypeCollectionName(_interface) + "SomeIPProxy(_address, _connection)"].join(',\n')
     }
 
+    def generateFDBusBaseInstantiations(FInterface _interface) {
+        val List<FInterface> baseInterfaces = getBaseInterfaces(_interface)
+        return baseInterfaces.map[getTypeCollectionName(_interface) + "FDBusProxy(_address, _connection)"].join(',\n')
+    }
+
     def String generateBaseRemoteHandlerConstructorsCalls(FInterface _interface) {
         val List<FInterface> baseInterfaces = getBaseInterfaces(_interface)
         var String itsCalls = ""
